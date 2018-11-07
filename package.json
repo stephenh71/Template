@@ -1,0 +1,31 @@
+{
+  "name": "shprojects",
+  "version": "1.0.0",
+  "description": "Template",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server:dev": "nodemon server/server.js",
+    "build": "webpack -w",
+    "seeds": "mongo < server/db/seeds.js"
+  },
+  "author": "Stephen Hart",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.17.4",
+    "webpack": "4.2.0",
+    "webpack-cli": "^2.1.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.8",
+    "tableify": "^1.1.0",
+    "vue": "^2.5.17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "npm install"
+  }
+}
