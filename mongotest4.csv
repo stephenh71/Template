@@ -1,0 +1,8 @@
+mid,name,partner,date_quote,residual
+12345678,Carlittos,Realex,01 Jan 98,1
+87654321,Cool Japan,Payfficiency,01 Feb 99,2
+,,,,
+,,,,
+,,,,
+,,,,
+_  Template git:(master) _ mongoimport --db shtest --collection merchants --type csv --headerline --mode merge --upsertFields name --file mongotest4.csv  --ignoreBlanks ,,,,

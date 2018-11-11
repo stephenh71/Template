@@ -13,8 +13,8 @@ const createRouter = require('./helpers/create_router.js');
 MongoClient.connect('mongodb://localhost:27017')
 .then((client) => {
   const db = client.db('shtest');
-  const sharesCollection = db.collection('merchants');
-  app.use('/api/merchants', createRouter(sharesCollection));
+  const merchantsCollection = db.collection('merchants');
+  app.use('/api/merchants', createRouter(merchantsCollection));
 })
 .catch((err) => {
   console.error('Failed to connect to DB');

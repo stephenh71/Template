@@ -11,34 +11,67 @@
   <title>Document</title>
 </head>
 <body>
-
 <div id="container">
 
   <div id="top_container">
-    <div><p>1</p></div>
-    <div><p>2</p></div>
-    <div><p>3</p></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 
   <div id="nav_container">
-    <div><p>hi</p></div>
-    <div><p>hi</p></div>
-    <div><p>hi</p></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 
   <div id="main_container">
-    <div><p>hi</p></div>
-    <div><p>hi</p></div>
-    <div><p>hi</p></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 
   <div id="footer_container">
-    <div><p>hi</p></div>
-    <div><p>hi</p></div>
-    <div><p>hi</p></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 
 </div>
 
+<h1>Merchants</h1>
+    <div class="wrapper">
+      <div>
+        <h2>Add a merchant</h2>
+        <form id="merchants-form">
+          <div>
+            <label for="date_quote">Quote date:</label>
+            <input type="date" id="date_quote"/>
+          </div>
+          <div>
+            <label for="mid">MID:</label>
+            <input type="number" id="mid"/>
+          </div>
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name"/>
+          </div>
+          <div>
+            <label for="partner">Partner:</label>
+            <input type="text" id="partner"/>
+          </div>
+          <div>
+            <label for="residual">Residual:</label>
+            <input type="number" id="residual"/>
+          </div>
+
+          <input type="submit" value="Save" id="save"/>
+        </form>
+      </div>
+      <div>
+        <h2>merchants</h2>
+        <div id="merchants"></div>
+      </div>
+    </div>
 </body>
 </html>
