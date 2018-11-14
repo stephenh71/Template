@@ -48,6 +48,7 @@ MerchantView.prototype.createDeleteButton = function (merchantId) {
 
   button.addEventListener('click', (evt) => {
     PubSub.publish('MerchantView:merchant-delete-clicked', evt.target.value);
+    console.log(evt.target.value);
   });
 
   return button;

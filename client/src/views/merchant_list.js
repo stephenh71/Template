@@ -1,99 +1,121 @@
 const PubSub = require('../helpers/pub_sub.js');
-
+const dateFormat = require('dateformat');
 const SelectMerchant = function (container) {
     this.container = container;
 };
 
 SelectMerchant.prototype.bindEvents = function () {
 
-  const inputMerchant = document.createElement("input");
-  inputMerchant.setAttribute("type","text");
-  inputMerchant.setAttribute("id", "myInput");
-  inputMerchant.setAttribute("placeholder", "Search for merchant...");
-  this.container.appendChild(inputMerchant);
+  PubSub.subscribe('Merchants:data-loaded', (data) => {
+    const merchants = data.detail;
+    console.log(merchants);
 
-  const merchantTable = document.createElement("table");
-  merchantTable.setAttribute("id", "myTable");
-  this.container.appendChild(merchantTable);
+    const inputMerchant = document.createElement("input");
+    inputMerchant.setAttribute("type","text");
+    inputMerchant.setAttribute("id", "myInput");
+    inputMerchant.setAttribute("placeholder", "Search for merchant.....");
+    this.container.appendChild(inputMerchant);
 
-  const tableRow = document.createElement("tr");
-  merchantTable.setAttribute("class", "header");
-  merchantTable.appendChild(tableRow);
+    const merchantTable = document.createElement("table");
+    merchantTable.setAttribute("id", "myTable");
+    this.container.appendChild(merchantTable);
 
-  const nameHeader = document.createElement("th");
-  nameHeader.style.width = "60%";
-  nameHeader.textContent = "Name";
-  tableRow.appendChild(nameHeader);
+    const tableRow = document.createElement("tr");
+    merchantTable.setAttribute("class", "header");
+    merchantTable.appendChild(tableRow);
 
-  const countryHeader = document.createElement("th");
-  countryHeader.style.width = "40%";
-  countryHeader.textContent = "Country";
-  tableRow.appendChild(countryHeader);
+    const quoteDateHeader = document.createElement("th");
+    quoteDateHeader.style.width = "10%";
+    quoteDateHeader.textContent = "Quote Date";
+    tableRow.appendChild(quoteDateHeader);
 
-  const tableRow2 = document.createElement("tr");
-  merchantTable.appendChild(tableRow2);
+    const quoteIdHeader = document.createElement("th");
+    quoteIdHeader.style.width = "10%";
+    quoteIdHeader.textContent = "Quote ID";
+    tableRow.appendChild(quoteIdHeader);
 
-  const name = document.createElement("td");
-  name.textContent = "Alfreds Futterkiste";
-  tableRow2.appendChild(name);
+    const nameHeader = document.createElement("th");
+    nameHeader.style.width = "10%";
+    nameHeader.textContent = "Name";
+    tableRow.appendChild(nameHeader);
 
-  const country = document.createElement("td");
-  country.textContent = "Germany";
-  tableRow2.appendChild(country);
+    const partnerHeader = document.createElement("th");
+    partnerHeader.style.width = "10%";
+    partnerHeader.textContent = "Partner";
+    tableRow.appendChild(partnerHeader);
 
-  const tableRow3 = document.createElement("tr");
-  merchantTable.appendChild(tableRow3);
+    const turnoverHeader = document.createElement("th");
+    turnoverHeader.style.width = "10%";
+    turnoverHeader.textContent = "Turnover";
+    tableRow.appendChild(turnoverHeader);
 
-  const name2 = document.createElement("td");
-  name2.textContent = "Island Trading";
-  tableRow3.appendChild(name2);
+    const statusHeader = document.createElement("th");
+    statusHeader.style.width = "10%";
+    statusHeader.textContent = "Status";
+    tableRow.appendChild(statusHeader);
 
-  const country2 = document.createElement("td");
-  country2.textContent = "UK";
-  tableRow3.appendChild(country2);
+    const updateDateHeader = document.createElement("th");
+    updateDateHeader.style.width = "10%";
+    updateDateHeader.textContent = "Update Date";
+    tableRow.appendChild(updateDateHeader);
 
-  const tableRow4 = document.createElement("tr");
-  merchantTable.appendChild(tableRow4);
+    merchants.forEach(merchant => {
 
-  const name3 = document.createElement("td");
-  name3.textContent = "Berglunds snabbkop";
-  tableRow4.appendChild(name3);
+    const tableRow = document.createElement("tr");
+    tableRow.setAttribute("id", "headerRow");
+    merchantTable.appendChild(tableRow);
 
-  const country3 = document.createElement("td");
-  country3.textContent = "Sweden";
-  tableRow4.appendChild(country3);
+    const element = document.createElement("td");
+    element.textContent = dateFormat(merchant.quoteDate,"dd mmmyy");
+    tableRow.appendChild(element);
 
-  const tableRow5 = document.createElement("tr");
-  merchantTable.appendChild(tableRow5);
+    const element2 = document.createElement("td");
+    element2.textContent = merchant.quoteID;
+    tableRow.appendChild(element2);
 
-  const name4 = document.createElement("td");
-  name4.textContent = "Koniglich Essen";
-  tableRow5.appendChild(name4);
+    const element3 = document.createElement("td");
+    element3.textContent = merchant.name;
+    tableRow.appendChild(element3);
 
-  const country4 = document.createElement("td");
-  country4.textContent = "Germany";
-  tableRow5.appendChild(country4);
+    const element4 = document.createElement("td");
+    element4.textContent = merchant.partner;
+    tableRow.appendChild(element4);
 
-  inputMerchant.onkeyup = function(){
-    // Declare variables
-    var input, filter, table, tr, td, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
+    const element5 = document.createElement("td");
+    element5.textContent = merchant.turnover;
+    tableRow.appendChild(element5);
 
-    // Loop through all table rows, and hide those who don't match the search query
+    const element6 = document.createElement("td");
+    element6.textContent = merchant.status;
+    tableRow.appendChild(element6);
 
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[1];
-      if (td) {
-        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
+    const element7 = document.createElement("td");
+    element7.textContent = dateFormat(merchant.updateDate,"dd mmmyy");
+    tableRow.appendChild(element7);
+  });
+
+    inputMerchant.onkeyup = function(){
+      // Declare variables
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          };
         };
       };
     };
-  };
+  });
 };
+
 module.exports = SelectMerchant;

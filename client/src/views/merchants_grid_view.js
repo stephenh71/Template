@@ -11,10 +11,10 @@ MerchantsGridView.prototype.bindEvents = function () {
   });
 };
 
-MerchantsGridView.prototype.render = function (merchants) {
+MerchantsGridView.prototype.render = function (customers) {
   this.container.innerHTML = '';
   const merchantView = new MerchantView(this.container);
-  merchants.forEach((merchant) => merchantView.render(merchant));
+  customers.forEach((customer) => merchantView.render(customer));
 };
 
 module.exports = MerchantsGridView;

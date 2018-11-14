@@ -20,6 +20,7 @@ Merchants.prototype.getData = function () {
   this.request.get()
     .then((merchants) => {
       PubSub.publish('Merchants:data-loaded', merchants);
+      console.log(merchants);
     })
     .catch(console.error);
 };

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const merchantsFormView = new MerchantFormView(merchantsForm);
   merchantsFormView.bindEvents();
 
-  const merchantsContainer = document.querySelector('div#merchants');
+  const merchantsContainer = document.querySelector('div#customers');
   const merchantsGridView = new MerchantGridView(merchantsContainer);
   merchantsGridView.bindEvents();
 
