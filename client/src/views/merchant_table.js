@@ -15,7 +15,7 @@ class MerchantTable {
             const inputMerchant = document.createElement("input");
             inputMerchant.setAttribute("type", "text");
             inputMerchant.setAttribute("id", "myInput");
-            inputMerchant.setAttribute("placeholder", "Search for merchant.....");
+            inputMerchant.setAttribute("placeholder", "Search for merchant....");
             this.container.appendChild(inputMerchant);
 
             const merchantTable = document.createElement("table");
